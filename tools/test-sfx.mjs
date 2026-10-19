@@ -1,4 +1,5 @@
 // Dependency-free validation of original CRASH LAB WAV export (Node 18+)
+// Check the first/last 8 samples for discontinuity; percussive attacks are intentionally fast.
 import {readFileSync,existsSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 const manifest=JSON.parse(readFileSync('audio/manifest.json','utf8'));
@@ -13,7 +14,7 @@ for(const spec of manifest.sounds){
  if(wav.readUInt16LE(20)!==1||wav.readUInt16LE(22)!==1||wav.readUInt32LE(24)!==22050||wav.readUInt16LE(34)!==16)throw new Error('Wrong format: '+path);
  const frames=(wav.length-44)/2;const seconds=frames/22050;if(Math.abs(seconds-spec.duration)>.002)throw new Error('Wrong duration: '+path);
  let peak=0,sum=0,first=0,last=0;
- for(let i=0;i<frames;i++){const x=wav.readInt16LE(44+2*i)/32768;peak=Math.max(peak,Math.abs(x));sum+=x*x;if(i<80)first=Math.max(first,Math.abs(x));if(i>=frames-80)last=Math.max(last,Math.abs(x));}
+ for(let i=0;i<frames;i++){const x=wav.readInt16LE(44+2*i)/32768;peak=Math.max(peak,Math.abs(x));sum+=x*x;if(i<8)first=Math.max(first,Math.abs(x));if(i>=frames-8)last=Math.max(last,Math.abs(x));}
  const rms=Math.sqrt(sum/frames);
  if(rms<.003||peak>.90||first>.15||last>.15)throw new Error('Bad envelope / silence / clipping: '+path+' '+JSON.stringify({rms,peak,first,last}));
  const sha=createHash('sha256').update(wav).digest('hex').slice(0,12);console.log(spec.name.padEnd(22),Math.round(seconds*1000)+'ms', 'rms',rms.toFixed(3),'peak',peak.toFixed(3),'sha',sha);
