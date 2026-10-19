@@ -1,0 +1,36 @@
+name: Sound Lab / generate and verify
+on:
+  push:
+    paths:
+      - 'audio/**'
+      - 'tools/generate-sfx.mjs'
+      - 'tools/test-sfx.mjs'
+      - '.github/workflows/audio-check.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  sound-kit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Generate 24 original effects
+        run: node tools/generate-sfx.mjs
+      - name: Verify WAV format, envelope and count
+        run: node tools/test-sfx.mjs
+      - name: Validate deterministic output
+        run: |
+          find audio/wav -type f -name '*.wav' -print0 | sort -z | xargs -0 sha256sum > /tmp/sha-before
+          node tools/generate-sfx.mjs
+          find audio/wav -type f -name '*.wav' -print0 | sort -z | xargs -0 sha256sum > /tmp/sha-after
+          diff -u /tmp/sha-before /tmp/sha-after
+      - name: Save playable WAVs
+        uses: actions/upload-artifact@v4
+        with:
+          name: crashlab-original-sfx-v0-1
+          path: audio/wav/*.wav
+          retention-days: 30
