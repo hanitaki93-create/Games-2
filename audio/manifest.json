@@ -1,0 +1,248 @@
+{
+  "name": "CRASH LAB original sound kit v0.1",
+  "license": "CC0-1.0",
+  "format": "WAV PCM16 mono 22050 Hz",
+  "baseline": "Games/codex/crash-lab-mobile-v2-levels08-23",
+  "sounds": [
+    {
+      "name": "draw_touch",
+      "category": "Drawing",
+      "duration": 0.12,
+      "kind": "ink",
+      "variant": 0,
+      "peak": 0.777,
+      "rms": 0.242,
+      "file": "wav/draw_touch.wav"
+    },
+    {
+      "name": "draw_glide_a",
+      "category": "Drawing",
+      "duration": 0.12,
+      "kind": "ink",
+      "variant": 1,
+      "peak": 0.781,
+      "rms": 0.241,
+      "file": "wav/draw_glide_a.wav"
+    },
+    {
+      "name": "draw_glide_b",
+      "category": "Drawing",
+      "duration": 0.12,
+      "kind": "ink",
+      "variant": 2,
+      "peak": 0.781,
+      "rms": 0.245,
+      "file": "wav/draw_glide_b.wav"
+    },
+    {
+      "name": "ink_release_a",
+      "category": "Release",
+      "duration": 0.23,
+      "kind": "release",
+      "variant": 0,
+      "peak": 0.779,
+      "rms": 0.263,
+      "file": "wav/ink_release_a.wav"
+    },
+    {
+      "name": "ink_release_b",
+      "category": "Release",
+      "duration": 0.23,
+      "kind": "release",
+      "variant": 1,
+      "peak": 0.779,
+      "rms": 0.247,
+      "file": "wav/ink_release_b.wav"
+    },
+    {
+      "name": "soft_bonk_a",
+      "category": "Impacts",
+      "duration": 0.17,
+      "kind": "impact",
+      "variant": 0,
+      "peak": 0.78,
+      "rms": 0.168,
+      "file": "wav/soft_bonk_a.wav"
+    },
+    {
+      "name": "soft_bonk_b",
+      "category": "Impacts",
+      "duration": 0.17,
+      "kind": "impact",
+      "variant": 1,
+      "peak": 0.778,
+      "rms": 0.155,
+      "file": "wav/soft_bonk_b.wav"
+    },
+    {
+      "name": "spring_bounce_a",
+      "category": "Impacts",
+      "duration": 0.26,
+      "kind": "bounce",
+      "variant": 0,
+      "peak": 0.78,
+      "rms": 0.235,
+      "file": "wav/spring_bounce_a.wav"
+    },
+    {
+      "name": "spring_bounce_b",
+      "category": "Impacts",
+      "duration": 0.26,
+      "kind": "bounce",
+      "variant": 1,
+      "peak": 0.779,
+      "rms": 0.248,
+      "file": "wav/spring_bounce_b.wav"
+    },
+    {
+      "name": "metal_hit_a",
+      "category": "Impacts",
+      "duration": 0.3,
+      "kind": "metal",
+      "variant": 0,
+      "peak": 0.78,
+      "rms": 0.132,
+      "file": "wav/metal_hit_a.wav"
+    },
+    {
+      "name": "metal_hit_b",
+      "category": "Impacts",
+      "duration": 0.3,
+      "kind": "metal",
+      "variant": 1,
+      "peak": 0.78,
+      "rms": 0.12,
+      "file": "wav/metal_hit_b.wav"
+    },
+    {
+      "name": "pip_scared_a",
+      "category": "Pip",
+      "duration": 0.35,
+      "kind": "pipfear",
+      "variant": 0,
+      "peak": 0.78,
+      "rms": 0.271,
+      "file": "wav/pip_scared_a.wav"
+    },
+    {
+      "name": "pip_scared_b",
+      "category": "Pip",
+      "duration": 0.35,
+      "kind": "pipfear",
+      "variant": 1,
+      "peak": 0.78,
+      "rms": 0.271,
+      "file": "wav/pip_scared_b.wav"
+    },
+    {
+      "name": "pip_cheer",
+      "category": "Pip",
+      "duration": 0.45,
+      "kind": "pipjoy",
+      "variant": 0,
+      "peak": 0.78,
+      "rms": 0.237,
+      "file": "wav/pip_cheer.wav"
+    },
+    {
+      "name": "pip_oops",
+      "category": "Pip",
+      "duration": 0.42,
+      "kind": "pipfail",
+      "variant": 0,
+      "peak": 0.78,
+      "rms": 0.272,
+      "file": "wav/pip_oops.wav"
+    },
+    {
+      "name": "pod_lock",
+      "category": "Machinery",
+      "duration": 0.19,
+      "kind": "impact",
+      "variant": 2,
+      "peak": 0.781,
+      "rms": 0.154,
+      "file": "wav/pod_lock.wav"
+    },
+    {
+      "name": "pod_whoosh",
+      "category": "Machinery",
+      "duration": 0.36,
+      "kind": "whoosh",
+      "variant": 0,
+      "peak": 0.781,
+      "rms": 0.16,
+      "file": "wav/pod_whoosh.wav"
+    },
+    {
+      "name": "near_miss",
+      "category": "Reactions",
+      "duration": 0.4,
+      "kind": "near",
+      "variant": 0,
+      "peak": 0.78,
+      "rms": 0.25,
+      "file": "wav/near_miss.wav"
+    },
+    {
+      "name": "retry",
+      "category": "Reactions",
+      "duration": 0.1,
+      "kind": "ui",
+      "variant": 0,
+      "peak": 0.78,
+      "rms": 0.206,
+      "file": "wav/retry.wav"
+    },
+    {
+      "name": "star_one",
+      "category": "Stars",
+      "duration": 0.23,
+      "kind": "star",
+      "variant": 0,
+      "peak": 0.78,
+      "rms": 0.218,
+      "file": "wav/star_one.wav"
+    },
+    {
+      "name": "star_two",
+      "category": "Stars",
+      "duration": 0.23,
+      "kind": "star",
+      "variant": 1,
+      "peak": 0.78,
+      "rms": 0.216,
+      "file": "wav/star_two.wav"
+    },
+    {
+      "name": "star_three",
+      "category": "Stars",
+      "duration": 0.23,
+      "kind": "star",
+      "variant": 2,
+      "peak": 0.78,
+      "rms": 0.217,
+      "file": "wav/star_three.wav"
+    },
+    {
+      "name": "victory",
+      "category": "Outcomes",
+      "duration": 0.9,
+      "kind": "victory",
+      "variant": 0,
+      "peak": 0.78,
+      "rms": 0.224,
+      "file": "wav/victory.wav"
+    },
+    {
+      "name": "comic_loss",
+      "category": "Outcomes",
+      "duration": 0.73,
+      "kind": "loss",
+      "variant": 0,
+      "peak": 0.78,
+      "rms": 0.236,
+      "file": "wav/comic_loss.wav"
+    }
+  ]
+}
