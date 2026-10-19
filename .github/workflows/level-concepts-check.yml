@@ -1,0 +1,36 @@
+name: CRASH LAB concept-design checks
+on:
+  push:
+    paths:
+      - 'design/chapter-24-31/**'
+      - '.github/workflows/level-concepts-check.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate level data and unique design questions
+        run: node design/chapter-24-31/validate.mjs
+      - name: Validate all 8 diagrams as SVG/XML
+        run: |
+          python3 - <<'PY'
+          import xml.etree.ElementTree as ET
+          for i in range(24,32):
+              path=f'design/chapter-24-31/diagrams/{i}.svg'
+              root=ET.parse(path).getroot()
+              assert root.tag.endswith('svg'), path
+              assert root.attrib['viewBox']=='0 0 900 720'
+              print('PASS SVG',i)
+          PY
+      - name: Check handoff and gallery exist
+        run: |
+          test -s design/chapter-24-31/CODEX_HANDOFF.md
+          test -s design/chapter-24-31/gallery.html
+          grep -q 'const levels=' design/chapter-24-31/gallery.html
