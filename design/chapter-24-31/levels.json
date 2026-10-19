@@ -1,0 +1,833 @@
+{
+  "schema": "crashlab-design-candidates/v1",
+  "status": "UNTESTED_VISUAL_SCHEMATICS",
+  "baseline": "hanitaki93-create/Games@codex/crash-lab-mobile-v2-levels08-23 (5ff4ae4)",
+  "coordinateSystem": {
+    "width": 900,
+    "height": 720,
+    "glass": {
+      "x": 48,
+      "y": 100,
+      "w": 804,
+      "h": 535
+    },
+    "yDown": true
+  },
+  "notes": "Schematic planning units: 900x720 design space; playable glass approx x=48–852, y=100–635. Rectangles are visual starting guesses only: no Unity physics validation, collision proof, measured ink budgets or 3-star pars.",
+  "sharedMechanics": [
+    {
+      "id": "pressure-plate-hold",
+      "description": "Plate requires physical sustained contact, powers linked retracting gate while occupied; never closes on a subject; lamp/cable indicates live power.",
+      "new": true
+    },
+    {
+      "id": "vertical-lift",
+      "description": "Vertical carrier waits for pad start AND passenger; docks high and hands Pip onto prebuilt exit route; once launched finishes cycle.",
+      "new": true
+    },
+    {
+      "id": "motor-command",
+      "description": "Visually distinct LIFT command pad latches after valid contact; gate plate is continuous-hold.",
+      "new": false
+    }
+  ],
+  "levels": [
+    {
+      "id": 24,
+      "name": "Push Comes to Shove",
+      "family": "First Contact",
+      "difficulty": 2,
+      "role": "Teach",
+      "tag": "One button. One audible consequence.",
+      "question": "Can you send a heavy test block to a clearly marked pressure pad so Pip's prebuilt escape rail becomes usable?",
+      "novelty": "First observable cause-and-effect: weight settles → lamp lights → hatch gate retracts. Pip's journey is mostly automated; the player learns the machinery.",
+      "elements": [
+        {
+          "kind": "pip",
+          "x": 172,
+          "y": 201
+        },
+        {
+          "kind": "weight",
+          "x": 325,
+          "y": 180
+        },
+        {
+          "kind": "pod",
+          "x": 715,
+          "y": 556,
+          "w": 138,
+          "h": 112
+        },
+        {
+          "kind": "pad",
+          "x": 470,
+          "y": 537,
+          "w": 80,
+          "h": 16,
+          "label": "PAD A"
+        },
+        {
+          "kind": "gate",
+          "x": 588,
+          "y": 390,
+          "w": 22,
+          "h": 170,
+          "label": "A"
+        },
+        {
+          "kind": "rail",
+          "a": [
+            125,
+            319
+          ],
+          "b": [
+            548,
+            492
+          ]
+        },
+        {
+          "kind": "rail",
+          "a": [
+            619,
+            508
+          ],
+          "b": [
+            754,
+            541
+          ]
+        }
+      ],
+      "stroke": [
+        [
+          310,
+          340
+        ],
+        [
+          405,
+          405
+        ],
+        [
+          505,
+          506
+        ]
+      ],
+      "alternatives": [
+        "A modest diagonal supports the falling weight into PAD A.",
+        "A curved scoop directs the block without requiring an exact angle."
+      ],
+      "player": "Draw one continuous guide under the falling metal block; release and watch the pad power the gate.",
+      "failure": "A mark under Pip ignores the clearly labeled block; the gate remains closed and its lamp stays amber.",
+      "fairness": "Start with a gate occupying a visibly cut rail; PAD A, cable and gate share the same yellow circuit marking. One gate opens only while PAD A is occupied.",
+      "timing": "Pad latches only after stable 0.15 s of contact. Gate retracts in roughly 0.25 s. The weight should reach PAD A before Pip reaches the gate in a natural successful route.",
+      "risks": "Early collisions between the drawn line, installed rail and block; tune height and separate lanes. Verify block stays on PAD A without a pixel-precise stroke.",
+      "hint": "The steel block is the key. Give it a downhill ride to the striped plate.",
+      "gate": "Candidate complete when 3 loose finger-width guides activate pad and let Pip reach collector; no narrow target exploitation.",
+      "implementation": "NEW: one reusable weight/Pip-compatible pressure pad + sliding gate + visible lamp/wire. Reuse existing SpawnWeight, rails and pod. Never bind this level to special-case id logic."
+    },
+    {
+      "id": 25,
+      "name": "Door Policy",
+      "family": "Hold Circuit",
+      "difficulty": 3,
+      "role": "Variation",
+      "tag": "A tap is not a promise.",
+      "question": "How can a single small drawing keep a rolling crate parked on a pad long enough for Pip to cross?",
+      "novelty": "Switch occupancy matters. The player discovers that triggering is not the same as holding: solve by catching, not by drawing a long new route.",
+      "elements": [
+        {
+          "kind": "pip",
+          "x": 185,
+          "y": 198
+        },
+        {
+          "kind": "crate",
+          "x": 370,
+          "y": 192
+        },
+        {
+          "kind": "pod",
+          "x": 714,
+          "y": 557,
+          "w": 138,
+          "h": 112
+        },
+        {
+          "kind": "pad",
+          "x": 507,
+          "y": 522,
+          "w": 84,
+          "h": 16,
+          "label": "PAD A"
+        },
+        {
+          "kind": "gate",
+          "x": 607,
+          "y": 392,
+          "w": 24,
+          "h": 170,
+          "label": "A"
+        },
+        {
+          "kind": "rail",
+          "a": [
+            150,
+            296
+          ],
+          "b": [
+            554,
+            473
+          ]
+        },
+        {
+          "kind": "rail",
+          "a": [
+            637,
+            492
+          ],
+          "b": [
+            764,
+            531
+          ]
+        },
+        {
+          "kind": "rail",
+          "a": [
+            397,
+            373
+          ],
+          "b": [
+            550,
+            499
+          ]
+        }
+      ],
+      "stroke": [
+        [
+          543,
+          473
+        ],
+        [
+          572,
+          477
+        ],
+        [
+          583,
+          499
+        ]
+      ],
+      "alternatives": [
+        "Short stopper on the downhill side of the pad.",
+        "Small curved bumper that dissipates the crate's motion without bouncing it away."
+      ],
+      "player": "Place a short stopper beside the pad; the existing steel runway gets the crate there. When it rests, the powered gate stays open.",
+      "failure": "A long ramp accelerates the crate across PAD A. The light flickers and the gate closes before Pip arrives.",
+      "fairness": "Always show the gate lamp following actual pad occupancy; no secret activation timers or delayed reset. Visible safe closing: gate does not crush Pip and waits until clear.",
+      "timing": "Do not surprise-relock mid-body. If switch empties, close after a short visible grace and only when gate volume is unoccupied; contact safety is mandatory.",
+      "risks": "Crate center-of-mass rolling vs visually depicted contact; wide sensor collider and friction tuning required. Guard against a solution that wedges Pip on the pad.",
+      "hint": "The crate can reach the plate. Can it stay for the whole inspection?",
+      "gate": "3 distinct short bumpers park the crate; a plain 'tap the pad' route demonstrably fails without making the gate appear arbitrary.",
+      "implementation": "REUSE pad and gate from 24. New behavior: continuous occupancy, anti-crush gate close interlock and visible occupied lamp. Do not use coded level-specific delay."
+    },
+    {
+      "id": 26,
+      "name": "Waiting Room",
+      "family": "Travel Timing",
+      "difficulty": 3,
+      "role": "Twist",
+      "tag": "Sometimes the shortest path arrives too soon.",
+      "question": "The block follows an installed slow chute toward PAD A. Can you give Pip a longer, gentler route so the gate is open when he arrives?",
+      "novelty": "The player's single stroke changes time-of-arrival rather than opening a gate. The first deliberate 'wait by routing' puzzle in this chapter.",
+      "elements": [
+        {
+          "kind": "pip",
+          "x": 172,
+          "y": 180
+        },
+        {
+          "kind": "weight",
+          "x": 719,
+          "y": 170
+        },
+        {
+          "kind": "pod",
+          "x": 722,
+          "y": 557,
+          "w": 138,
+          "h": 112
+        },
+        {
+          "kind": "pad",
+          "x": 495,
+          "y": 529,
+          "w": 84,
+          "h": 16,
+          "label": "PAD A"
+        },
+        {
+          "kind": "gate",
+          "x": 592,
+          "y": 355,
+          "w": 24,
+          "h": 185,
+          "label": "A"
+        },
+        {
+          "kind": "rail",
+          "a": [
+            681,
+            269
+          ],
+          "b": [
+            511,
+            485
+          ]
+        },
+        {
+          "kind": "rail",
+          "a": [
+            130,
+            297
+          ],
+          "b": [
+            548,
+            452
+          ]
+        },
+        {
+          "kind": "rail",
+          "a": [
+            628,
+            476
+          ],
+          "b": [
+            767,
+            526
+          ]
+        }
+      ],
+      "stroke": [
+        [
+          270,
+          313
+        ],
+        [
+          220,
+          387
+        ],
+        [
+          415,
+          451
+        ]
+      ],
+      "alternatives": [
+        "A safe shallow bend that lengthens Pip's route.",
+        "A two-stage cradle that lets Pip descend after PAD A is visibly occupied."
+      ],
+      "player": "The weight is already guided to the plate. Draw Pip a reasonable detour before the gate, rather than racing it.",
+      "failure": "A short straight acceleration stroke gets Pip to the still-locked gate; he hits a visible, solid door.",
+      "fairness": "Weight timing should come from physics and prebuilt chute, not a hidden countdown. Failed early-arrival should produce readable 'gate locked' motion. No split-second release control.",
+      "timing": "Successful window must be broad (target ≥0.8 s); avoid a narrow reaction-time test or needing to pause screen interactions.",
+      "risks": "Fixed rail can override player route. Ensure the intended detour is physically attractive and differentiates early vs timely arrival in physics replay.",
+      "hint": "Pip is early. Give the block time to do the paperwork.",
+      "gate": "At least two meaningfully different gentle detours solve; direct short line collides closed gate; timing margin ≥0.8 s.",
+      "implementation": "No new mechanism. Reuse hold pad and gate; only tune trajectory and relative travel distance."
+    },
+    {
+      "id": 27,
+      "name": "Two Jobs, One Line",
+      "family": "Dual-Purpose Stroke",
+      "difficulty": 4,
+      "role": "Aha",
+      "tag": "One shape. Two consequences.",
+      "question": "Can one connected ink shape catch a weight onto the pad and then make Pip's landing safely clear the opened gate?",
+      "novelty": "The same physical drawing plays two roles on different sides: guided counterweight and Pip's escape deflector. Not merely solving two disconnected mini-puzzles.",
+      "elements": [
+        {
+          "kind": "pip",
+          "x": 178,
+          "y": 186
+        },
+        {
+          "kind": "weight",
+          "x": 381,
+          "y": 179
+        },
+        {
+          "kind": "pod",
+          "x": 717,
+          "y": 554,
+          "w": 138,
+          "h": 112
+        },
+        {
+          "kind": "pad",
+          "x": 481,
+          "y": 545,
+          "w": 87,
+          "h": 16,
+          "label": "PAD A"
+        },
+        {
+          "kind": "gate",
+          "x": 599,
+          "y": 419,
+          "w": 24,
+          "h": 138,
+          "label": "A"
+        },
+        {
+          "kind": "rail",
+          "a": [
+            148,
+            304
+          ],
+          "b": [
+            389,
+            381
+          ]
+        },
+        {
+          "kind": "rail",
+          "a": [
+            628,
+            500
+          ],
+          "b": [
+            764,
+            532
+          ]
+        }
+      ],
+      "stroke": [
+        [
+          335,
+          334
+        ],
+        [
+          470,
+          467
+        ],
+        [
+          528,
+          499
+        ],
+        [
+          665,
+          501
+        ]
+      ],
+      "alternatives": [
+        "A descending ramp that ends in a braking shelf.",
+        "A soft hooked stroke that still presents a support to the weight and a descent for Pip."
+      ],
+      "player": "A single continuous shape must bring the block onto the trigger and create a safe passage for Pip.",
+      "failure": "A stroke that only sends the block to the pad opens the gate but drops Pip onto the wrong side of the final gap.",
+      "fairness": "Acknowledge any elegant creative solution with one line; do not require exact 'S' or diagram tracing. Players can see the relevant physics before release.",
+      "timing": "The weight must reach the pad before Pip's gate approach in viable routes; challenge is shape function, not a 0.1 s synchronized race.",
+      "risks": "Overly complicated geometry may become an exact-stroke contest. Reject and simplify if less than three broad gesture variants succeed.",
+      "hint": "Don't draw two things. Make one thing help two experiments.",
+      "gate": "Three flexible connected shapes independently affect both weight and Pip; short one-purpose strokes fail for understandable reasons.",
+      "implementation": "REUSE switch/gate and native one-stroke collision. Only a level layout; do not introduce multi-stroke or material switching."
+    },
+    {
+      "id": 28,
+      "name": "The Intern Goes First",
+      "family": "Cooperative Subjects",
+      "difficulty": 3,
+      "role": "Breather",
+      "tag": "A colleague with a temporary job.",
+      "question": "Can one Pip briefly hold down the pad while the other crosses a gate, then still get both into the same collector?",
+      "novelty": "Subjects cooperate: first arrival enables passage for second. The pad is not just an object sorter; it adds a small story with recognizable lab characters.",
+      "elements": [
+        {
+          "kind": "pip",
+          "x": 184,
+          "y": 201
+        },
+        {
+          "kind": "intern",
+          "x": 348,
+          "y": 180
+        },
+        {
+          "kind": "pod",
+          "x": 720,
+          "y": 557,
+          "w": 138,
+          "h": 112
+        },
+        {
+          "kind": "pad",
+          "x": 445,
+          "y": 515,
+          "w": 100,
+          "h": 16,
+          "label": "PAD A"
+        },
+        {
+          "kind": "gate",
+          "x": 590,
+          "y": 416,
+          "w": 23,
+          "h": 130,
+          "label": "A"
+        },
+        {
+          "kind": "rail",
+          "a": [
+            325,
+            272
+          ],
+          "b": [
+            462,
+            496
+          ]
+        },
+        {
+          "kind": "rail",
+          "a": [
+            145,
+            310
+          ],
+          "b": [
+            550,
+            467
+          ]
+        },
+        {
+          "kind": "rail",
+          "a": [
+            621,
+            488
+          ],
+          "b": [
+            758,
+            540
+          ]
+        }
+      ],
+      "stroke": [
+        [
+          480,
+          478
+        ],
+        [
+          525,
+          493
+        ],
+        [
+          553,
+          474
+        ]
+      ],
+      "alternatives": [
+        "A low shared nudge for the second Pip while the first passes over the switch.",
+        "A shallow deflector that lets both join after the gate."
+      ],
+      "player": "The intern's fixed route brings him to the switch; guide Pip through while the circuit is held. A short shared return chute carries the intern out afterward.",
+      "failure": "If Pip races ahead or the intern leaves the plate too soon, the light goes dark and the gate blocks him; any rescue of just one still fails.",
+      "fairness": "Critical feasibility rule: a switch occupant MUST have a visible physical route off the pad after the second subject safely passes. No permanently parked rescue subject. The gate stays open while a body is inside it.",
+      "timing": "Use broad spatial separation and physics-controlled dwell, not an invisible timer. If both cannot reach the pod on one continuous stroke, redesign before acceptance.",
+      "risks": "Highest risk level in batch: long dwell may trap the intern and contradict two-subject rescue. A reliable exit-from-pad route is essential, not optional.",
+      "hint": "The intern can hold the button. But HR insists that he gets out too.",
+      "gate": "Two subjects physically captured in collector, one at a time, in 3 loose stroke replays. Reject if first cannot leave plate or non-gate bypass trivializes it.",
+      "implementation": "Only existing Pips + plate/gate. No scripted 'intern presses button' shortcut; all triggers from real Rigidbody2D contact."
+    },
+    {
+      "id": 29,
+      "name": "Elevator Pitch",
+      "family": "Lift Onboarding",
+      "difficulty": 2,
+      "role": "Teach",
+      "tag": "Going up. Against company policy.",
+      "question": "Can you guide Pip aboard a clearly marked vertical lift while a fixed test block automatically powers it?",
+      "novelty": "First meaningful vertical travel machine. Introduce a visible lift ride, dock and short exit rail without mixing additional mechanics.",
+      "elements": [
+        {
+          "kind": "pip",
+          "x": 173,
+          "y": 205
+        },
+        {
+          "kind": "weight",
+          "x": 686,
+          "y": 185
+        },
+        {
+          "kind": "pod",
+          "x": 726,
+          "y": 560,
+          "w": 138,
+          "h": 112
+        },
+        {
+          "kind": "pad",
+          "x": 658,
+          "y": 531,
+          "w": 88,
+          "h": 16,
+          "label": "LIFT"
+        },
+        {
+          "kind": "lift",
+          "x": 407,
+          "y": 496,
+          "w": 138,
+          "h": 18,
+          "toY": 300,
+          "label": "L"
+        },
+        {
+          "kind": "rail",
+          "a": [
+            132,
+            305
+          ],
+          "b": [
+            387,
+            489
+          ]
+        },
+        {
+          "kind": "rail",
+          "a": [
+            486,
+            312
+          ],
+          "b": [
+            758,
+            525
+          ]
+        }
+      ],
+      "stroke": [
+        [
+          235,
+          335
+        ],
+        [
+          365,
+          479
+        ],
+        [
+          436,
+          480
+        ]
+      ],
+      "alternatives": [
+        "Short entry guide to the waiting lift.",
+        "Small cradle just before the lift deck that preserves forward motion."
+      ],
+      "player": "The block will trigger the lift. Pip needs a reliable boarding ramp; once Pip is on the platform, the lift raises him to the exit rail.",
+      "failure": "A line that sends Pip past the platform leaves him below it. A correct lift clearly waits at the lower dock rather than leaving before the player can board.",
+      "fairness": "Lift only departs when PAD L is powered AND Pip is on its platform. Clear deck outline, docking lights and line to upper exit rail; no unexplained lift launching.",
+      "timing": "Travel begins automatically after visible boarding/pad conditions; moving platform smoothly carries Rigidbody2D passenger, no jump input.",
+      "risks": "Coupling a kinematic vertical platform with 2D collision; ensure it does not push Pip through ceilings and that upper rail catches him with broad tolerance.",
+      "hint": "Pip cannot reach the top. Make sure he catches his ride.",
+      "gate": "3 broad entry strokes successfully board lift, ride, disembark, reach pod. No auto-capture merely from standing near lift.",
+      "implementation": "NEW shared vertical-lift module, reuse current carrier concept/kinematic movement, simple dock sensor. Avoid a separate cinematic or physics engine."
+    },
+    {
+      "id": 30,
+      "name": "Weight of Responsibility",
+      "family": "Lift Control",
+      "difficulty": 4,
+      "role": "Mastery",
+      "tag": "The passenger is ready. The power isn't.",
+      "question": "Pip is already waiting on the lift. Can a compact drawn guide put a falling steel block on the plate to activate it safely?",
+      "novelty": "Invert 29. The player controls the machine's power sequence, not boarding; the lift is already occupied and the ink must avoid disrupting passenger.",
+      "elements": [
+        {
+          "kind": "pip",
+          "x": 405,
+          "y": 475
+        },
+        {
+          "kind": "weight",
+          "x": 270,
+          "y": 195
+        },
+        {
+          "kind": "pod",
+          "x": 723,
+          "y": 560,
+          "w": 138,
+          "h": 112
+        },
+        {
+          "kind": "pad",
+          "x": 565,
+          "y": 524,
+          "w": 88,
+          "h": 16,
+          "label": "LIFT"
+        },
+        {
+          "kind": "lift",
+          "x": 350,
+          "y": 505,
+          "w": 150,
+          "h": 18,
+          "toY": 304,
+          "label": "L"
+        },
+        {
+          "kind": "rail",
+          "a": [
+            460,
+            306
+          ],
+          "b": [
+            751,
+            525
+          ]
+        },
+        {
+          "kind": "rail",
+          "a": [
+            225,
+            325
+          ],
+          "b": [
+            415,
+            418
+          ]
+        }
+      ],
+      "stroke": [
+        [
+          239,
+          315
+        ],
+        [
+          360,
+          399
+        ],
+        [
+          598,
+          499
+        ]
+      ],
+      "alternatives": [
+        "Compact downhill channel from the block to the plate.",
+        "Short interception plus a prebuilt fixed rail feeding PAD L."
+      ],
+      "player": "Pip is aboard the lift from frame one. Route the falling block into the lift circuit; use the minimal intervention to power the ride.",
+      "failure": "A giant stroke can strike Pip on the deck or send the weight across the empty floor instead of activating the lift.",
+      "fairness": "Player must see the lift occupant, its unlit circuit and the independent falling block. Do not reward drawing under Pip: he is already correctly placed.",
+      "timing": "The lift stays stationary until the pad is active; once started, it completes its ride even if the block bounces away (latched ride command). The PAD L appearance should communicate latched lift activation, unlike hold gates.",
+      "risks": "Introducing a latched motor command after hold gates may confuse players. Clearly distinguish LIFT command with up-arrow + 'READY/GO', no identical plate artwork for different semantics.",
+      "hint": "Pip brought himself. The motor wants a down payment.",
+      "gate": "Weight reaches circuit with 3 alternate finger-sized guides; elevator finishes and passenger reaches collector, no crush/no blocked upper exit.",
+      "implementation": "Reuse 29's lift + a one-shot motor start on sustained pad contact (not a gate occupancy rule); visually explicit latched lift state."
+    },
+    {
+      "id": 31,
+      "name": "Chain of Command",
+      "family": "Gate Final",
+      "difficulty": 4,
+      "role": "Exam",
+      "tag": "The lab works perfectly. Unfortunately.",
+      "question": "Can you shape one line so a block holds the gate, and Pip uses a familiar tailwind only after the passage is open?",
+      "novelty": "Combines *learned* gate and existing fan in a short, observable sequence; no new trick, material or abstract control.",
+      "elements": [
+        {
+          "kind": "pip",
+          "x": 160,
+          "y": 182
+        },
+        {
+          "kind": "weight",
+          "x": 356,
+          "y": 186
+        },
+        {
+          "kind": "pod",
+          "x": 714,
+          "y": 560,
+          "w": 138,
+          "h": 112
+        },
+        {
+          "kind": "pad",
+          "x": 495,
+          "y": 519,
+          "w": 88,
+          "h": 16,
+          "label": "PAD A"
+        },
+        {
+          "kind": "gate",
+          "x": 584,
+          "y": 412,
+          "w": 22,
+          "h": 137,
+          "label": "A"
+        },
+        {
+          "kind": "fan",
+          "x": 625,
+          "y": 360,
+          "w": 160,
+          "h": 175,
+          "dx": 5,
+          "dy": 3,
+          "label": "AIR"
+        },
+        {
+          "kind": "rail",
+          "a": [
+            120,
+            311
+          ],
+          "b": [
+            556,
+            476
+          ]
+        },
+        {
+          "kind": "rail",
+          "a": [
+            603,
+            496
+          ],
+          "b": [
+            755,
+            529
+          ]
+        }
+      ],
+      "stroke": [
+        [
+          332,
+          333
+        ],
+        [
+          480,
+          469
+        ],
+        [
+          530,
+          493
+        ],
+        [
+          627,
+          490
+        ]
+      ],
+      "alternatives": [
+        "A long but shallow connected stroke powers the switch then gives Pip a braking landing.",
+        "One short intercept can redirect weight and leave the installed rail doing most of Pip's trip."
+      ],
+      "player": "Use the line to send the block to the pad. The door opens; the air current then does the travel. Use available ink for control, not brute force.",
+      "failure": "A direct high-speed escape before powering the door runs into the locked shutter. A long ink bridge may keep Pip above the fan and overshoot.",
+      "fairness": "Open state, airflow direction and pod clearance must remain visible together; no hidden sequence flags. Only one newly learned mechanism family (gate) plus a familiar fan.",
+      "timing": "One clear dependency: PAD A powers door; Pip crosses then airflow nudges. Give >1 s of viable temporal slack. Unpowered gate physically blocks.",
+      "risks": "Too much at once if switch, gate and fan all intersect Pip draw corridor. Favor spacious board and reuse wide launch rail; reject if only microscopic line works.",
+      "hint": "Power first. Then let the wind file the escape paperwork.",
+      "gate": "Three robust broad connected drawings; one understandable failure for each omitted step; two-pip not required in finale, fatigue managed after hard 27 and 30.",
+      "implementation": "REUSE plate, gate, fan, rail. No lift in level 31: keeps final exam focused on two learned technologies."
+    }
+  ]
+}

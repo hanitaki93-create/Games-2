@@ -1,0 +1,4 @@
+// Only validates completeness, coordinates and distinct design roles; NOT physics or playability.
+import {readFileSync} from 'node:fs';import assert from 'node:assert/strict';
+const p=JSON.parse(readFileSync('design/chapter-24-31/levels.json','utf8'));assert.equal(p.levels.length,8);
+const roles=new Set(),questions=new Set();for(let i=0;i<8;i++){let l=p.levels[i];assert.equal(l.id,24+i);assert(l.name&&l.question&&l.novelty&&l.player&&l.failure&&l.gate&&l.risks&&l.fairness&&l.hint);assert(!questions.has(l.question));questions.add(l.question);roles.add(l.role);assert.equal(l.elements.filter(e=>e.kind==='pip').length,1);assert.equal(l.elements.filter(e=>e.kind==='pod').length,1);assert(l.stroke.length>=2);for(let pt of l.stroke)assert(pt[0]>=48&&pt[0]<=852&&pt[1]>=100&&pt[1]<=635,'stroke outside drawing glass: '+l.id);}assert(roles.size>=4);console.log('PASS eight proposed level concepts; design schema only, physics untested');
